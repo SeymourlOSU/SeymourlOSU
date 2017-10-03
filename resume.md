@@ -10,7 +10,7 @@ Leith Seymour
 
 Seymourl@oregonstate.edu
 
-
+![15698077_10211902652022033_1040650212691243170_n](C:\Users\Leith Seymour\Downloads\15698077_10211902652022033_1040650212691243170_n.jpg)
 
 I believe that i a hard working person with a positive work history 
 
