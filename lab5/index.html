@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Benton County And Corvallis Park Analysis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <!--make sure you add bootstrap 3.3.7 rather than 4.0.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/storymap.2.3.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--add required libraries-->
+    <!--leaflet-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--boostrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <!--story map plugin-->
+    <script src="dist/storymap.2.3.js"></script>
+</head>
+<body>
+
+
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://rawgit.com/SeymourlOSU/Lab5/index.html" target="_blank"></a>
+
+            <section data-scene="scene0">
+                <h2>Park Analysis of Benton County</h2>
+                <br>
+                <p>Have you ever wondered where your parks are in Benton County?, or maybe just in the city of Corvallis.</p>
+                <p>This story map will tell you about those different parks, as well as some interesting characteristics and features of those parks</p>
+                <P>Here you can see each county in Oregon, scroll down on this info window to zoom into Benton County</P>
+                <p>There is also an invisible widget in the center left edge of your screen for changing scenes</p>
+            </section>
+            <section data-scene="scene1">
+                <h2>Park and Open Space Types</h2>
+                <br>
+                <p>This view shows the different tpyes of land that the parks in Benton County are</p>
+                <p>For this map the green areas are natural spaces, red areas and recreational areas, and yellow area within school grounds.</p>
+                <p>Additionally parks for the city of corvallis which aren't included in those designations are marked blue</p>
+                <p>Continue scrolling down here for more information</p>
+            </section>
+            <section data-scene="scene2">
+                <h2>Park and Open Space Management</h2>
+                <br>
+                <p>In the previous view we could see many of the same spaces as here, but not who managed those spaces.</p>
+                <p>Here you can see that Green spaces are federally managed(BLM,ODFW,etc), Red spaces area managed by the county, and Blue again by the city of Corvallis.</p>
+                <p>Also you can see there is an orange area. This outlines the Mcdunn forest area that is managed by Oregonstate University </p>
+                <p>continue scrolling down here for extra information about the city parks of corvallis</p>
+            </section>
+            <section data-scene="scene3">
+                <h2>City Parks Playgrounds</h2>
+                <br>
+                <p>Now Zoomed in on Corvallis we can see just the city parks</p>
+                <p>This data view shows which parks are considered to have a playground with green being having one and red not having one</p>
+                <p>As you can see, there is only one park with a play ground under the cities jurdisdiction, Willamette park</p>
+                <p>Don't forgot that this doesn't include playgrounds on school grounds or in county managed parks, but just in City run parks</p>
+                <p>continue scrolling down for more information</p>
+            </section>
+            <section data-scene="scene5">
+                <h2>City Parks Dogs</h2>
+                <br>
+                <p>Have you ever wanted to know which parks or open spaces you can take your faithful companion, or maybe somewhere to get away from dogs for a day</p>
+                <p>This Map shows all the parks and open spaces in the city which allow dogs in green, and all those that don't in red</p>
+                <p>The area you see in red there is the Caldwell Natural Area Park</p>
+                <p>Hopefully you have a better understanding of the parks in Benton County, the city of Corvallis, and what you can do at them.</p>
+            </section>
+            <section data-scene="end" data-background="assets/end1.jpg">
+                <div class="fullscreen text-center">
+                    <br/>
+                    <h1 class="">Thanks for looking at my map!</h1>
+
+
+
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    var layers = {
+
+        layer0: {
+            layer: L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/mapious/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ore_counties&outputFormat=application%2Fjson', {
+                color: 'white',
+                weight: 3
+            }),
+            legend: '<i style="background: black; opacity: 0.3"></i><p><b>legend 2</b></p>'
+        },
+
+        layer1: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/seymourl/cjajgsyigau2n2rpte1h98qgg/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V5bW91cmwiLCJhIjoiY2o5N3M5ajh0MGIwNTJxbXEwdDdoNDhtdCJ9.Er8hYnAzwXtTj9f42wGxpQ'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer2: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/seymourl/cjasydc7ifysk2socb9b0kcdh/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V5bW91cmwiLCJhIjoiY2o5N3M5ajh0MGIwNTJxbXEwdDdoNDhtdCJ9.Er8hYnAzwXtTj9f42wGxpQ'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer4: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/seymourl/cjatbr2vd4bnj2rkfs46gg7qv/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V5bW91cmwiLCJhIjoiY2o5N3M5ajh0MGIwNTJxbXEwdDdoNDhtdCJ9.Er8hYnAzwXtTj9f42wGxpQ'),
+        },
+        layer5: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/seymourl/cjatcacy38kbb2srssmq5c8sm/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V5bW91cmwiLCJhIjoiY2o5N3M5ajh0MGIwNTJxbXEwdDdoNDhtdCJ9.Er8hYnAzwXtTj9f42wGxpQ'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer3: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/seymourl/cjat8ybke491g2rkf795a1986/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V5bW91cmwiLCJhIjoiY2o5N3M5ajh0MGIwNTJxbXEwdDdoNDhtdCJ9.Er8hYnAzwXtTj9f42wGxpQ')
+        }
+
+    };
+
+    var scenes = {
+        scene5: {lat: 44.5701158, lng: -123.2949388, zoom: 13, layers: ['layer5'], name: "scene 5"},
+        scene0: {lat: 44.4963432, lng: -123.5099875, zoom:  6, layers: ['layer0','layer4'], name: "scene 0"},
+        scene1: {lat: 44.4963432, lng: -123.5099875, zoom:  11, layers: ['layer1'], name: "scene 1"},
+        scene2: {lat: 44.4963432, lng: -123.5099875, zoom: 11, layers: ['layer2'], name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 13, layers: ['layer3'], name: "scene 3"}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        layers: layers,
+        baselayer: layers.layer4,
+        legend: false,
+        loader: true,
+        flyto: true,
+        credits: " Created by Leith Seymour. Click the person <i class='glyphicon glyphicon-user' style='color: black'></i> For Leith Seymour's Github account",
+        scalebar: true,
+        scrolldown: false,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+           var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+          basemap = this.baselayer.layer.addTo(map);
+
+
+            return map;
+        }
+    });
+
+</script>
+</body>
+</html>
